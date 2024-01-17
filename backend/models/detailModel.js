@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 export const createDetailModel = (sequelize, DataTypes) => {
   const Detail = sequelize.define("Detail", {
     vr_no: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "Header",
@@ -10,9 +10,10 @@ export const createDetailModel = (sequelize, DataTypes) => {
       },
     },
     sr_no: {
-      type: DataTypes.NUMERIC(18),
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      defaultValue:1
     },
     item_code: {
       type: DataTypes.STRING(20),
@@ -31,11 +32,11 @@ export const createDetailModel = (sequelize, DataTypes) => {
       allowNull: true,
     },
     qty: {
-      type: DataTypes.NUMERIC(18, 3),
+      type: DataTypes.DECIMAL(18, 3),
       allowNull: false,
     },
     rate: {
-      type: DataTypes.NUMERIC(18, 2),
+      type: DataTypes.DECIMAL(18, 2),
       allowNull: false,
     },
   });

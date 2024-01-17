@@ -3,7 +3,7 @@ import { generateItemCode } from "../helpers/modelHelper.js"
  const createItemMasterModel = (sequelize, DataTypes)=>{
     const ItemMaster =  sequelize.define("ItemMaster",{
         item_code:{
-            type:DataTypes.STRING(20),
+            type:DataTypes.INTEGER,
             primaryKey:true,
             allowNull:false,
             defaultValue:()=>generateItemCode()
@@ -13,7 +13,7 @@ import { generateItemCode } from "../helpers/modelHelper.js"
             allowNull:false,
         },
         item_rate:{
-            type:DataTypes.NUMERIC(18,2),
+            type:DataTypes.DECIMAL(18,2),
             allowNull:false
         }
     })

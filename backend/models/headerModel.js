@@ -2,9 +2,10 @@ import {v4 as uuidv4} from 'uuid'
 const createHeaderModel = (sequelize, DataTypes) => {
   const Header = sequelize.define("Header", {
     vr_no: {
-      type: DataTypes.UUID,
-      defaultValue:()=>uuidv4(),
+      type: DataTypes.INTEGER,
+      autoIncrement:true,
       primaryKey: true,
+      defaultValue:1
     },
     vr_date: {
       type: DataTypes.DATE,
@@ -16,7 +17,7 @@ const createHeaderModel = (sequelize, DataTypes) => {
         allowNull:false
     },
     ac_amt:{
-        type:DataTypes.NUMERIC(18,2),
+        type:DataTypes.DECIMAL(18,2),
         allowNull:false,
     },
     status:{
