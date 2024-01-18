@@ -5,7 +5,7 @@ const createHeaderModel = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement:true,
       primaryKey: true,
-      defaultValue:1
+      
     },
     vr_date: {
       type: DataTypes.DATE,

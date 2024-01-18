@@ -31,16 +31,7 @@ export const  authenticateDatabase=async()=> {
     }
   }
   
-  
-  
-  export const syncDatabase=async()=>{
-        try {
-            await sequelize.sync({force:false})
-            console.log('yes re-sync done!');
-        } catch (error) {
-            console.log("Error in re sync ",error);
-        }
-  }
+
   const db={
     Sequelize,
     sequelize,
@@ -50,12 +41,26 @@ export const  authenticateDatabase=async()=> {
         ItemMaster: createItemMasterModel(sequelize,DataTypes)
     }
   }
-  db.models.Detail.belongsTo(db.models.Header,{
-    foreignKey:'vr_no',
-    as:'header',
-  })
-  db.models.Detail.belongsTo(db.models.ItemMaster,{
-    foreignKey:'item_code',
-    as:'itemMaster'
-  })
+  // db.models.Detail.belongsTo(db.models.Header,{
+  //   foreignKey:'vr_no',
+  //   as:'Headers',
+  // })
+  // db.models.Detail.belongsTo(db.models.ItemMaster,{
+  //   foreignKey:'item_code',
+  //   as:'ItemMaster'
+  // })
   export default db
+
+  export const syncDatabase = async () => {
+    try {
+      await db.models.Header.sync();
+      await db.models.ItemMaster.sync();
+      await db.models.Detail.sync();
+  
+      console.log('Database synchronized successfully!');
+    } catch (error) {
+      console.error('Error in re-sync:', error);
+    }
+  };
+  
+  
