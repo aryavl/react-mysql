@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import { authenticateDatabase, syncDatabase } from './models/index.js';
+import headerRouter from './routes/headerRoutes.js';
+
 // Adjust the path if needed
 
 // Call the authentication function
@@ -23,6 +25,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({extended:true}))
 
+app.use('/',headerRouter)
 // testing
 
 app.get('/',(req,res)=>{
